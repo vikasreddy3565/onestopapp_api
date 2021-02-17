@@ -7186,11 +7186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\source\\onestopapp_api\\onestopapp_api.csproj",
+      "projectUniqueName": "C:\\source\\onestopapp_api\\onestopapp_api.csproj",
       "projectName": "onestopapp_api",
-      "projectPath": "c:\\source\\onestopapp_api\\onestopapp_api.csproj",
+      "projectPath": "C:\\source\\onestopapp_api\\onestopapp_api.csproj",
       "packagesPath": "C:\\Users\\vikas reddy katti\\.nuget\\packages\\",
-      "outputPath": "c:\\source\\onestopapp_api\\obj\\",
+      "outputPath": "C:\\source\\onestopapp_api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -7259,7 +7259,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.405\\RuntimeIdentifierGraph.json"
       }
     }
   }

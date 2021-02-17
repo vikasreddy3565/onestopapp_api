@@ -1,4 +1,3 @@
-using Dms.Core.EntityFramework.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OneStopApp.Interface;
 using OneStopApp.Service;
+using OneStopApp_Api.EntityFramework.Data;
+using OneStopApp_Api.Interface;
+using OneStopApp_Api.Service;
 
 namespace OneStopApp_api
 {
@@ -31,7 +33,7 @@ namespace OneStopApp_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContextPool<OspContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OspConnection")));
+            services.AddDbContextPool<OsaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("OspConnection")));
             // Add framework services.
             services.AddCors(options =>
         {
@@ -46,17 +48,18 @@ namespace OneStopApp_api
         });
 
             // services.AddResponseCaching();
-            services.AddHttpClient<IWeatherService,WeatherService>();
+            services.AddHttpClient<IWeatherService, WeatherService>();
             services.AddControllers();
             services.AddHttpClient();
             services.AddMemoryCache();
             services.AddRazorPages();
             services.AddDataProtection();
             services.AddTransient<ITechnologyService, TechnologyService>();
+            services.AddTransient<ISaltPasswordService, SaltPasswordService>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IMovieService, MovieService>();
             services.AddTransient<INewsService, NewsService>();
-            // services.AddTransient<IWeatherService, WeatherService>();
+            services.AddTransient<IWeatherService, WeatherService>();
             services.AddAuthentication(options =>
            {
                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

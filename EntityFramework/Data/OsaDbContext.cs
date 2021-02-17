@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OneStopApp_Api.EntityFramework.Model;
-
-namespace Dms.Core.EntityFramework.Data
+namespace OneStopApp_Api.EntityFramework.Data
 {
     public class OsaDbContext : DbContext
     {
@@ -9,7 +8,7 @@ namespace Dms.Core.EntityFramework.Data
         { }
         public DbSet<User> Users { get; set; }
         public DbSet<UserStatus> UserStatuses { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
+         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Country> Countries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

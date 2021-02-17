@@ -6,8 +6,8 @@ namespace OneStopApp_Api.EntityFramework.Model
     [Table("Profile", Schema = "dbo")]
     public class Profile
     {
-        [Column("userid")]
         [Key]
+        [ForeignKey("User")]
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -15,9 +15,8 @@ namespace OneStopApp_Api.EntityFramework.Model
         [Column("CountryOfCitizenshipId")]
         [ForeignKey("Country")]
         public int? CountryId { get; set; }
+        public bool? HasMiddleName { get; set; }
         public virtual Country Country { get; set; }
-        public bool? IsDomestic { get; set; }
-        [Column("HasMiddleName")]
-        public bool? NoMiddleName { get; set; }
+        public virtual User User { get; set; }
     }
 }
