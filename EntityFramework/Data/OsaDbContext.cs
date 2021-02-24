@@ -8,8 +8,9 @@ namespace OneStopApp_Api.EntityFramework.Data
         { }
         public DbSet<User> Users { get; set; }
         public DbSet<UserStatus> UserStatuses { get; set; }
-         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

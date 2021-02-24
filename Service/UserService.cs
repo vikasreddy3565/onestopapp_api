@@ -11,8 +11,9 @@ using OneStopApp_Api.EntityFramework.Data;
 using OneStopApp_Api.Interface;
 using OneStopApp_Api.EntityFramework.Model;
 using Dms.Services.ViewModel.Security;
+using OneStopApp_Api.Enums;
 
-namespace Dms.Services.Implementation.Security
+namespace OneStopApp.Service
 {
     public class UserService : IUserService
     {
@@ -40,37 +41,49 @@ namespace Dms.Services.Implementation.Security
             emailExists = await _context.Users.AnyAsync(usr => usr.EmailAddress == email);
             return emailExists;
         }
-        public RegisterUserViewModel CreateUser(RegisterUserViewModel model)
+        public RegisterUserViewModel CreateUser(RegisterUserViewModel Model)
         {
-            if (model == null) return null;
+            if (Model == null) return null;
 
             var user = new User
             {
-                Profile = new Profile
-                {
-                    FirstName = _casingHelper.ToTitleCase(model.FirstName),
-                    LastName = _casingHelper.ToTitleCase(model.LastName),
-                    MiddleName = _casingHelper.ToTitleCase(model.MiddleName),
-                },
-                UserName = model.UserName,
-                Password = _saltPasswordService.SaltPassword(model.Password),
-                EmailAddress = model.Email,
+                UserName = Model.UserName,
+                Password = _saltPasswordService.SaltPassword(Model.Password),
+                EmailAddress = Model.Email,
                 StatusId = (int)UserStatusEnum.Active,
+                CreatedDate = DateTime.UtcNow,
+            };
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            var UserId = _context.Users.Where(u => u.EmailAddress == Model.Email).First().Id;
+            var Profile = new Profile
+            {
+                UserId = UserId,
+                FirstName = Model.FirstName,
+                LastName = Model.LastName,
+                CountryId = Model.CountryId,
+
             };
 
-            _context.Users.Add(user);
+            var UserRole = new UserRole
+            {
+                UserId = UserId,
+                RoleId = 1,
+            };
+
+            _context.Profiles.Add(Profile);
+            _context.UserRoles.Add(UserRole);
             _context.SaveChanges();
 
             try
             {
-                _emailDomainService.SendEmail(new List<string>() { model.Email }, new List<string>(),
-               "DMS Registration - Verify User Account", "Thank you for registering with DMS.", null);
+            //     _emailDomainService.SendEmail(new List<string>() { Model.Email }, new List<string>(),
+            //    "OSA Registration - Verify User Account", "Thank you for registering with One Stop.", null);
             }
             catch (Exception)
             {
-
             }
-            return model;
+            return Model;
         }
 
         public async Task<ResponseMessageViewModel> ForgotUserName(string email)
@@ -141,6 +154,17 @@ namespace Dms.Services.Implementation.Security
                 respone.Message = "Failed to update password.";
             }
             return respone;
+        }
+
+        public List<CountryViewModel> GetCountries()
+        {
+            var Countries = _context.Countries.Select(c => new CountryViewModel
+            {
+                Id = c.Id,
+                Name = c.NiceName,
+                IsActive = c.IsActive
+            }).ToList();
+            return Countries;
         }
     }
 }

@@ -10,11 +10,8 @@ namespace OneStopApp_Api.EntityFramework.Model
         public string UserName { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
-        [ForeignKey("Country")]
-        public int? CountryId { get; set; }
         [ForeignKey("UserStatus")]
         public int? StatusId { get; set; }
         public virtual UserStatus UserStatus { get; set; }
-        public virtual Country Profile { get; set; }
     }
 }

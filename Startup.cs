@@ -60,6 +60,8 @@ namespace OneStopApp_api
             services.AddTransient<IMovieService, MovieService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IWeatherService, WeatherService>();
+             services.AddTransient<IUserService, UserService>();
+              services.AddTransient<IEmailDomainService, EmailDomainService>();
             services.AddAuthentication(options =>
            {
                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
