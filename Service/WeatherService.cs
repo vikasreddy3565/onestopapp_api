@@ -10,9 +10,9 @@ namespace OneStopApp.Service
     public class WeatherService : IWeatherService
     {
         private readonly HttpClient _client;
-        public WeatherService(HttpClient client)
+        public WeatherService()
         {
-            _client = client;
+            _client = new HttpClient();
         }
 
         public async Task<WeatherViewModel> GetWeatherAsync(string Ip)

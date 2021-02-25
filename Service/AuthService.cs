@@ -63,7 +63,7 @@ namespace OneStopApp.Service
                 return new TokenResultViewModel
                 {
                     Code = "2000",
-                    Message = "Invalid Username and Password",
+                    Message = "Invalid Username or Password",
                     Data = null
                 };
             }

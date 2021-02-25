@@ -11,6 +11,7 @@ using OneStopApp.Service;
 using OneStopApp_Api.EntityFramework.Data;
 using OneStopApp_Api.Interface;
 using OneStopApp_Api.Service;
+using OneStopApp_Api.ViewModel;
 
 namespace OneStopApp_api
 {
@@ -46,11 +47,9 @@ namespace OneStopApp_api
                                .AllowAnyMethod();
                               });
         });
-
-            // services.AddResponseCaching();
-            services.AddHttpClient<IWeatherService, WeatherService>();
-            services.AddControllers();
+            services.Configure<SaltPasswordViewModel>(Configuration.GetSection("SaltPasswordConfiguration"));
             services.AddHttpClient();
+            services.AddControllers();
             services.AddMemoryCache();
             services.AddRazorPages();
             services.AddDataProtection();
@@ -60,8 +59,8 @@ namespace OneStopApp_api
             services.AddTransient<IMovieService, MovieService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IWeatherService, WeatherService>();
-             services.AddTransient<IUserService, UserService>();
-              services.AddTransient<IEmailDomainService, EmailDomainService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IEmailDomainService, EmailDomainService>();
             services.AddAuthentication(options =>
            {
                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

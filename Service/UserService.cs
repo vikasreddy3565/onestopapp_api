@@ -12,6 +12,8 @@ using OneStopApp_Api.Interface;
 using OneStopApp_Api.EntityFramework.Model;
 using Dms.Services.ViewModel.Security;
 using OneStopApp_Api.Enums;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace OneStopApp.Service
 {
@@ -55,10 +57,10 @@ namespace OneStopApp.Service
             };
             _context.Users.Add(user);
             _context.SaveChanges();
-            var UserId = _context.Users.Where(u => u.EmailAddress == Model.Email).First().Id;
+            var User = _context.Users.Where(u => u.EmailAddress == Model.Email).First();
             var Profile = new Profile
             {
-                UserId = UserId,
+                UserId = User.Id,
                 FirstName = Model.FirstName,
                 LastName = Model.LastName,
                 CountryId = Model.CountryId,
@@ -67,22 +69,14 @@ namespace OneStopApp.Service
 
             var UserRole = new UserRole
             {
-                UserId = UserId,
+                UserId = User.Id,
                 RoleId = 1,
             };
 
             _context.Profiles.Add(Profile);
             _context.UserRoles.Add(UserRole);
             _context.SaveChanges();
-
-            try
-            {
-            //     _emailDomainService.SendEmail(new List<string>() { Model.Email }, new List<string>(),
-            //    "OSA Registration - Verify User Account", "Thank you for registering with One Stop.", null);
-            }
-            catch (Exception)
-            {
-            }
+            SendEmail("test email", User.EmailAddress);
             return Model;
         }
 
@@ -165,6 +159,20 @@ namespace OneStopApp.Service
                 IsActive = c.IsActive
             }).ToList();
             return Countries;
+        }
+
+        private async void SendEmail(string Subject, string Email)
+        {
+            var client = new SendGridClient("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");
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress("no-reply@onestopapp.com", "One Stop"),
+                Subject = Subject,
+                HtmlContent = "html tags"
+            };
+            msg.AddTo(new EmailAddress(Email));
+            msg.SetClickTracking(false, false);
+            await client.SendEmailAsync(msg);
         }
     }
 }
