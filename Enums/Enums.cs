@@ -16,15 +16,11 @@ namespace OneStopApp_Api.Enums
         Active = 1,
         [Description("Inactive")]
         Inactive = 2,
-        [Description("Pending")]
-        Pending = 3,
         [Description("Locked")]
-        Locked = 4,
-        [Description("Active with Temporary Password")]
-        ActivewithTemporaryPassword = 5,
-        [Description("Banned")]
-        Banned = 6,
+        Locked = 3,
         [Description("Expired")]
-        Expired = 7
+        Expired = 4,
+         [Description("OnHold")]
+        OnHold = 5
     }
 }

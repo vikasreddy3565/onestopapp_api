@@ -2953,7 +2953,7 @@
       ]
     },
     "runtime.native.System.Data.SqlClient.sni/4.4.0": {
-      "sha512": "A8v6PGmk+UGbfWo5Ixup0lPM4swuSwOiayJExZwKIOjTlFFQIsu3QnDXECosBEyrWSPryxBVrdqtJyhK3BaupQ==",
+      "sha512": "Xu7AUFtXuxEspQPI5nKCDEiEcbRmE5FTIO0qE1r0qA9v1OoawQZnbWmsnrdYaO8vlSixXMedPv1U6916STjPnQ==",
       "type": "package",
       "path": "runtime.native.system.data.sqlclient.sni/4.4.0",
       "files": [
@@ -7242,23 +7242,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vkatti\\.nuget\\packages\\": {},
+    "C:\\Users\\vikas reddy katti\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\onestopapp_api.csproj",
+      "projectUniqueName": "C:\\source\\onestopapp_api\\onestopapp_api.csproj",
       "projectName": "onestopapp_api",
-      "projectPath": "C:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\onestopapp_api.csproj",
-      "packagesPath": "C:\\Users\\vkatti\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\obj\\",
+      "projectPath": "C:\\source\\onestopapp_api\\onestopapp_api.csproj",
+      "packagesPath": "C:\\Users\\vikas reddy katti\\.nuget\\packages\\",
+      "outputPath": "C:\\source\\onestopapp_api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\vkatti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vikas reddy katti\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

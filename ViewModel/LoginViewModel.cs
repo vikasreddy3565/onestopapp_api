@@ -12,6 +12,7 @@ namespace OneStopApp_Api.EntityFramework.ViewModel
         public AuthResult Result { get; set; }
         public bool PasswordMatch { get; set; }
         public int? UserStatusId { get; set; }
+         public string UserRole { get; set; }
         public bool PasswordChangeRequired { get; set; }
         public bool PasswordExpired { get; set; }
         public string PasswordExpirationDate { get; set; }

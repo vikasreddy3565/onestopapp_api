@@ -153,14 +153,12 @@ namespace OneStopApp.Service
             userResponse.FullName = profile != null ? string.Format("{0} {1} {2}", profile.FirstName, profile.MiddleName, profile.LastName) : string.Empty;
             userResponse.PasswordMatch = passwordMatch;
             userResponse.UserStatusId = user.StatusId;
-
-            if (user.StatusId == (int)UserStatusEnum.Active || user.StatusId == (int)UserStatusEnum.ActivewithTemporaryPassword)
+            userResponse.UserRole = _context.UserRoles.Where(ur => ur.UserId == user.Id).First().Roles.Name;
+            if (user.StatusId == (int)UserStatusEnum.Active)
             {
                 if (passwordMatch)
                 {
                     userResponse.Result = AuthResult.Success;
-                    var passwordChangeRecommendedInDays = _passwordChangeSettings.Value.PasswordChangeRecommendedInDays;
-                    var passwordExpiredInDays = _passwordChangeSettings.Value.PasswordExpiredInDays;
                 }
 
                 await _context.SaveChangesAsync();

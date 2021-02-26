@@ -20,7 +20,7 @@ namespace OneStopApp_Api.EntityFramework.Audit
         }
 
         [Column("CreatedBy")]
-        public int CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
 
         private DateTime? _modifiedDate;
 
@@ -38,6 +38,6 @@ namespace OneStopApp_Api.EntityFramework.Audit
         }
 
         [Column("UpdatedBy")]
-        public int? ModifiedBy { get; set; }
+        public string ModifiedBy { get; set; }
     }
 }
