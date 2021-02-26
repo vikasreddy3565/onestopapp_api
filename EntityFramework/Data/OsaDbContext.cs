@@ -11,6 +11,7 @@ namespace OneStopApp_Api.EntityFramework.Data
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<ClientValidation> ClientValidations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

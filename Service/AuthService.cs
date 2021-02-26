@@ -24,11 +24,11 @@ namespace OneStopApp.Service
         private readonly IOptions<JwtSettings> _jwtSettings;
         private readonly OsaDbContext _context;
         private readonly ISaltPasswordService _saltPasswordService;
-        private readonly IOptions<PasswordChangeSettings> _passwordChangeSettings;
-        public AuthService(OsaDbContext context, ISaltPasswordService SaltedPasswordService)
+        public AuthService(IOptions<JwtSettings> jwtSettings, OsaDbContext context, ISaltPasswordService SaltedPasswordService)
         {
             _context = context;
             _saltPasswordService = SaltedPasswordService;
+            _jwtSettings = jwtSettings;
         }
         public TokenResultViewModel DoPassword(JwtParameterViewModel model)
         {
@@ -153,7 +153,7 @@ namespace OneStopApp.Service
             userResponse.FullName = profile != null ? string.Format("{0} {1} {2}", profile.FirstName, profile.MiddleName, profile.LastName) : string.Empty;
             userResponse.PasswordMatch = passwordMatch;
             userResponse.UserStatusId = user.StatusId;
-            userResponse.UserRole = _context.UserRoles.Where(ur => ur.UserId == user.Id).First().Roles.Name;
+            userResponse.UserRole = _context.UserRoles.Include(ur => ur.Roles).Where(ur => ur.UserId == user.Id).First().Roles.Name;
             if (user.StatusId == (int)UserStatusEnum.Active)
             {
                 if (passwordMatch)

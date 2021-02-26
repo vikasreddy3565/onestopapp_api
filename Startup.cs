@@ -8,7 +8,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OneStopApp.Interface;
 using OneStopApp.Service;
+using onestopapp_api.Interface;
+using onestopapp_api.Service;
 using OneStopApp_Api.EntityFramework.Data;
+using OneStopApp_Api.EntityFramework.ViewModel;
 using OneStopApp_Api.Interface;
 using OneStopApp_Api.Service;
 using OneStopApp_Api.ViewModel;
@@ -48,6 +51,7 @@ namespace OneStopApp_api
                               });
         });
             services.Configure<SaltPasswordViewModel>(Configuration.GetSection("SaltPasswordConfiguration"));
+            services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
             services.AddHttpClient();
             services.AddControllers();
             services.AddMemoryCache();
@@ -60,6 +64,7 @@ namespace OneStopApp_api
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IWeatherService, WeatherService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ISharedService, SharedService>();
             services.AddTransient<IEmailDomainService, EmailDomainService>();
             services.AddAuthentication(options =>
            {

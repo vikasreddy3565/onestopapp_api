@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OneStopApp.Interface;
+using onestopapp_api.Interface;
 using OneStopApp_Api.EntityFramework.ViewModel;
 
 namespace OneStopApp_Api_Controllers
@@ -11,10 +12,12 @@ namespace OneStopApp_Api_Controllers
     {
         private readonly ILogger _logger;
         private readonly IAuthService _service;
-        public AuthController(ILogger<AuthController> logger, IAuthService service)
+        private readonly ISharedService _sharedService;
+        public AuthController(ILogger<AuthController> logger, IAuthService service, ISharedService sharedService)
         {
             this._logger = logger;
             this._service = service;
+            this._sharedService = sharedService;
         }
 
         [HttpPost("Authenticate")]
@@ -24,16 +27,17 @@ namespace OneStopApp_Api_Controllers
             {
                 return new NotFoundResult();
             }
-
-            if (parameters.GrantType == "password")
+            if (_sharedService.IsClientValid(parameters.ClientId))
             {
-                return new OkObjectResult(_service.DoPassword(parameters));
+                if (parameters.GrantType == "password")
+                {
+                    return new OkObjectResult(_service.DoPassword(parameters));
+                }
+                else if (parameters.GrantType == "refresh_token")
+                {
+                    return new OkObjectResult(_service.DoRefreshToken(parameters));
+                }
             }
-            else if (parameters.GrantType == "refresh_token")
-            {
-                return new OkObjectResult(_service.DoRefreshToken(parameters));
-            }
-
             return new OkObjectResult(new TokenResultViewModel
             {
                 Code = "9000",

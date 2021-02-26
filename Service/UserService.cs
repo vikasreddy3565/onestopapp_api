@@ -14,6 +14,7 @@ using Dms.Services.ViewModel.Security;
 using OneStopApp_Api.Enums;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using onestopapp_api.Interface;
 
 namespace OneStopApp.Service
 {
@@ -23,12 +24,14 @@ namespace OneStopApp.Service
         private readonly OsaDbContext _context;
         private readonly IEmailDomainService _emailDomainService;
         private readonly ISaltPasswordService _saltPasswordService;
+        private readonly ISharedService _sharedService;
 
-        public UserService(OsaDbContext context, IEmailDomainService emailDomainService, ISaltPasswordService SaltedPasswordService)
+        public UserService(OsaDbContext context, IEmailDomainService emailDomainService, ISaltPasswordService SaltedPasswordService, ISharedService sharedService)
         {
             _context = context;
             _emailDomainService = emailDomainService;
             _saltPasswordService = SaltedPasswordService;
+            _sharedService = sharedService;
         }
 
         public async Task<bool> CheckUserExists(string userName)
@@ -76,7 +79,7 @@ namespace OneStopApp.Service
             _context.Profiles.Add(Profile);
             _context.UserRoles.Add(UserRole);
             _context.SaveChanges();
-            SendEmail("test email", User.EmailAddress);
+            _sharedService.SendEmail("test email", User.EmailAddress);
             return Model;
         }
 
@@ -159,20 +162,6 @@ namespace OneStopApp.Service
                 IsActive = c.IsActive
             }).ToList();
             return Countries;
-        }
-
-        private async void SendEmail(string Subject, string Email)
-        {
-            var client = new SendGridClient("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");
-            var msg = new SendGridMessage()
-            {
-                From = new EmailAddress("no-reply@onestopapp.com", "One Stop"),
-                Subject = Subject,
-                HtmlContent = "html tags"
-            };
-            msg.AddTo(new EmailAddress(Email));
-            msg.SetClickTracking(false, false);
-            await client.SendEmailAsync(msg);
         }
     }
 }

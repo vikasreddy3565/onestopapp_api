@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\source\\onestopapp_api\\onestopapp_api.csproj",
+  "FilePath": "c:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\onestopapp_api.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14392,37 +14392,37 @@
   "RootNamespace": "onestopapp_api",
   "Documents": [
     {
-      "FilePath": "c:\\source\\onestopapp_api\\Pages\\Shared\\_Layout.cshtml",
-      "TargetPath": "Pages\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\source\\onestopapp_api\\Pages\\_ViewStart.cshtml",
-      "TargetPath": "Pages\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\source\\onestopapp_api\\Pages\\_ViewImports.cshtml",
-      "TargetPath": "Pages\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\source\\onestopapp_api\\Pages\\Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\source\\onestopapp_api\\Pages\\Privacy.cshtml",
+      "FilePath": "c:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\Pages\\Privacy.cshtml",
       "TargetPath": "Pages\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\source\\onestopapp_api\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "c:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\source\\onestopapp_api\\Pages\\Index.cshtml",
+      "FilePath": "c:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\Pages\\Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\Pages\\_ViewStart.cshtml",
+      "TargetPath": "Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\Pages\\Shared\\_Layout.cshtml",
+      "TargetPath": "Pages\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vkatti\\OneDrive - Cleaver-Brooks, Inc\\Documents\\onestop\\onestopapp_api\\Pages\\Index.cshtml",
       "TargetPath": "Pages\\Index.cshtml",
       "FileKind": "mvc"
     }
